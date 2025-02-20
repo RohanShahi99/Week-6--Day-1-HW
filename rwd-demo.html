@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>My First Web Page</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="demo.css">
+
+</head> 	
+<body>
+
+<div id="container">
+
+<header style="font-size: 60px; color: #fff;">My Web Site Brand</header>
+<nav>
+	<ul>
+    <li><a href="js-demo2.html">Home</a></li>
+    <li><a href="js-demo2b.html">About</a></li>
+    <li><a href="js-demo2d.html">Gallery</a></li>
+    <li><a href="js-demo2c.html">Contact</a></li>
+	</ul>
+</nav>
+
+<main>
+  <div class="cards">
+    <div class="card">
+      <h1>My First Heading</h1>
+      <p>My first paragraph.</p>
+    </div>
+      <div class="card"> 
+        <img src="images/east-village.jpg" alt="East Village" width="400">
+      </div>
+  </div>
+</main>
+
+<footer>&copy; Copyright 2021</footer>
+
+</div>
+
+</body>
+</html>
+<script>
+  $(document).ready(function () {
+    function adjustLayout() {
+        let screenWidth = $(window).width();
+
+        // If screen width is less than 600px, switch to a single column layout
+        if (screenWidth < 600) {
+            $(".cards").css({
+                "display": "flex",
+                "flex-direction": "column",
+                "align-items": "center"
+            });
+
+            $(".card").css({
+                "flex": "1 1 100%",
+                "text-align": "center"
+            });
+
+            $("header").css({
+                "height": "200px",
+                "font-size": "2em",
+                "background-size": "contain"
+            });
+
+            $("nav li").css({
+                "display": "block",
+                "padding": "10px 0"
+            });
+
+        } else {
+            // Two-column layout for 600px and above
+            $(".cards").css({
+                "display": "flex",
+                "flex-wrap": "wrap",
+                "justify-content": "center",
+                "gap": "20px"
+            });
+
+            $(".card").css({
+                "flex": "1 1 45%", 
+                "text-align": "center"
+            });
+
+            $("header").css({
+                "height": "300px",
+                "font-size": "2.5em",
+                "background-size": "cover"
+            });
+
+            $("nav li").css({
+                "display": "inline-block",
+                "padding": "0 20px"
+            });
+        }
+    }
+
+    // Call function on page load and window resize
+    adjustLayout();
+    $(window).resize(adjustLayout);
+});
+
+</script>
